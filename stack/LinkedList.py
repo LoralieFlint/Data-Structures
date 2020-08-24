@@ -9,14 +9,11 @@ class Node:
     #     return self.length
     def get_value(self):
         return self.value
-
     def get_next(self):
         return self.next_node
-
     def set_next(self, new_next):
         # set this node's next_node reference to the passed in node
         self.next_node = new_next
-
 
 class LinkedList:
     def __init__(self):
@@ -35,7 +32,7 @@ class LinkedList:
     def add_to_head(self, value):
         new_node = Node(value, self.head)
         self.head = new_node
-        if self.length == 0:
+        if self.length == 0:    
             self.tail = new_node
         self.length += 1
 
@@ -52,7 +49,7 @@ class LinkedList:
         if self.head is None:
             return None
         # list with one nodes
-        elif self.head == self.tail:  # this works because we checked to see if the head was None first - if head was None, tail would be None and things would break
+        elif self.head == self.tail: # this works because we checked to see if the head was None first - if head was None, tail would be None and things would break
             head_value = self.head.get_value()
             self.head = None
             self.tail = None
@@ -69,11 +66,11 @@ class LinkedList:
         if self.tail is None:
             return None
         elif self.head == self.tail:
-            tail_value = self.tail.get_value()
+            # tail_value = self.tail.get_value()
             self.head = None
             self.tail = None
             self.length -= 1
-            return tail_value
+            return self.tail.get_value()
         else:
             tail_value = self.tail
             cur_node = self.head
@@ -94,12 +91,12 @@ class LinkedList:
         return False
 
 
-# my_ll = LinkedList()
-# my_ll.add_to_head(0)
-# my_ll.add_to_tail(1)
-# my_ll.add_to_tail(6)
-# my_ll.remove_tail()
-# my_ll.remove_head()
-# print(my_ll)
-# print(my_ll.length)
+my_ll = LinkedList()
+my_ll.add_to_head(0)
+my_ll.add_to_tail(1)
+my_ll.add_to_tail(6)
+my_ll.remove_tail()
+my_ll.remove_head()
+print(my_ll)
+print(my_ll.length)
 # print(my_ll.tail)
