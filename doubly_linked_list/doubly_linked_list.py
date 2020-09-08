@@ -118,8 +118,6 @@ class DoublyLinkedList:
         # the node is the head node (make sure to handle head pointer properly)
         if self.head == node:
             self.head = node.next
-
-
         # the node is the tail ( make sure tail is handled correctly)
         # the node is just some node in the list
         
@@ -128,7 +126,19 @@ class DoublyLinkedList:
     # Finds and returns the maximum value of all the nodes 
     # in the List.
     # """
+    def get_max(self):
+        if self.length == 0:
+            return None
+        if self.length == 1:
+            return self.head.value
+        curr_max = self.head.value
+        curr_node = self.head.next
+        while curr_node is not None:
+            if curr_max < curr_node.value:
+                curr_max = curr_node.value
+            curr_node = curr_node.next
+        return curr_max
 
-    # def get_max(self):
-    #     pass
+
+
 
