@@ -87,9 +87,17 @@ class BSTNode:
         
 
 #     """ Call the function `fn` on the value of each node"""
-#     # def for_each(self, fn):
-#     #     pass
+    def for_each(self, fn):
+        if self.value is None:
+            return 
 
+        fn(self.value)
+
+        if self.right:
+            self.right.for_each(fn)
+
+        if self.left:
+            self.left.for_each(fn)
 #     # Part 2 -----------------------
 
 #     """ Print all the values in order from low to high
@@ -123,15 +131,15 @@ class BSTNode:
 # """
 # This code is necessary for testing the `print` methods
 # """
-# bst = BSTNode(1)
+bst = BSTNode(1)
 
-# bst.insert(8)
-# bst.insert(5)
-# bst.insert(7)
-# bst.insert(6)
-# bst.insert(3)
-# bst.insert(4)
-# bst.insert(2)
+bst.insert(8)
+bst.insert(5)
+bst.insert(7)
+bst.insert(6)
+bst.insert(3)
+bst.insert(4)
+bst.insert(2)
 
 # bst.bft_print()
 # bst.dft_print()
