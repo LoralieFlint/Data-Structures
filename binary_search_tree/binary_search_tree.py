@@ -53,64 +53,77 @@ class BSTNode:
     def contains(self, target):
         # if single element
         # compare target value to node value
+        if self.value == target:
+            return True
         # if target > node value:
         # go right
         # if node.right is None:
         # weve traversed the tree and havent found it 
         # return False
+        elif target > self.value and self.right:
+            return self.right.contains(target)
         # else
         # do the same thing
         # return node right contains target
         # else if target < node value 
         # go left 
+        elif target < self.value and self.left:
+            return self.right.contains(target)
         # if node left is None
         # return False
         # else
         # do the same thing
         # compare go left or right
         # return node left contains target 
-        pass
+        return False
 
-    # Return the maximum value found in the tree
+#     """Return the maximum value found in the tree"""
     def get_max(self):
-        pass
+        if self.value and self.right:
+            if self.value < self.right.value:
+                return self.right.get_max()
+        else:
+            return self.value
+        
 
-    # Call the function `fn` on the value of each node
-    def for_each(self, fn):
-        pass
+#     """ Call the function `fn` on the value of each node"""
+#     # def for_each(self, fn):
+#     #     pass
 
-    # Part 2 -----------------------
+#     # Part 2 -----------------------
 
-    # Print all the values in order from low to high
-    # Hint:  Use a recursive, depth first traversal
-    def in_order_print(self):
-        pass
+#     """ Print all the values in order from low to high
+#      Hint:  Use a recursive, depth first traversal """
+#     # def in_order_print(self):
+#     #     pass
 
-    # Print the value of every node, starting with the given node,
-    # in an iterative breadth first traversal
-    def bft_print(self):
-        pass
+#     """ Print the value of every node, starting with the given node,
+#      in an iterative breadth first traversal"""
+#     # def bft_print(self):
+#     #     pass
 
-    # Print the value of every node, starting with the given node,
-    # in an iterative depth first traversal
-    def dft_print(self):
-        pass
+#     """ Print the value of every node, starting with the given node,
+#      in an iterative depth first traversal"""
+#     # def dft_print(self):
+#     #     pass
 
-    # Stretch Goals -------------------------
-    # Note: Research may be required
+# """
+#     # Stretch Goals -------------------------
+#     # Note: Research may be required
+# """
 
-    # Print Pre-order recursive DFT
-    def pre_order_dft(self):
-        pass
+#    """  Print Pre-order recursive DFT"""
+#     # def pre_order_dft(self):
+#     #     pass
 
-    # Print Post-order recursive DFT
-    def post_order_dft(self):
-        pass
+#     """ Print Post-order recursive DFT"""
+#     # def post_order_dft(self):
+#     #     pass
 
-"""
-This code is necessary for testing the `print` methods
-"""
-bst = BSTNode(1)
+# """
+# This code is necessary for testing the `print` methods
+# """
+# bst = BSTNode(1)
 
 # bst.insert(8)
 # bst.insert(5)
@@ -129,4 +142,4 @@ bst = BSTNode(1)
 # print("in order")
 # bst.in_order_dft()
 # print("post order")
-# bst.post_order_dft()  
+# bst.post_order_dft()
