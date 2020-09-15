@@ -87,7 +87,7 @@ class BSTNode:
         
 
 #     """ Call the function `fn` on the value of each node"""
-    def for_each(self, fn):
+    def for_each(self, fn): # recursive
         if self.value is None:
             return
         fn(self.value)
@@ -95,6 +95,26 @@ class BSTNode:
             self.right.for_each(fn)
         if self.left:
             self.left.for_each(fn)
+
+
+    # def for_each_iterative(self, fn): # iterative
+    #     # depth first traversal iterative 
+    #     # start at the root 
+    #     cur_node = self
+    #     # push it on the stack 
+    #     stack = Stack()
+    #     stack.push(cur_node)
+    #     # while stack is not empty
+    #     while len(stack) > 0:
+    #         cur_node = stack.pop()
+    #         # push right
+    #         if cur_node.right is not None:
+    #             stack.push(cur_node.right)
+    #         # push left
+    #         if cur_node.left is not None:
+    #             stack.push(cur_node.left)
+    #         # do the thing with the current node
+    #         fn(cur_node.value)
 
 #     # Part 2 -----------------------
 #     """ Print all the values in order from low to high
