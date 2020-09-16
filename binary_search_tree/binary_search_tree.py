@@ -9,6 +9,29 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+# breadth first
+class Que:
+    def __init__(self):
+        self.storage = list()
+
+    def enque(self, value):
+        self.storage.insert(0, value)
+
+    def deque(self):
+        if len(self.storage) > 0:
+            return self.storage.pop()
+
+# depth first
+class Stack:
+    def __init__(self):
+        self.storage = list()
+
+    def push(self, value):
+        self.storage.append(value)
+
+    def pop(self):
+        if len(self.storage) > 0:
+            return self.storage.pop()
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -43,9 +66,6 @@ class BSTNode:
                     # insert value to node left
                     left_child = self.left
                     left_child.insert(value)
-
-
-
 
 
     # Return True if the tree contains the value
@@ -116,22 +136,36 @@ class BSTNode:
     #         # do the thing with the current node
     #         fn(cur_node.value)
 
+
+
 #     # Part 2 -----------------------
 #     """ Print all the values in order from low to high
 #      Hint:  Use a recursive, depth first traversal """
     def in_order_print(self):
-        pass
+        if self is None:
+            return
+        if self.left:
+            self.left.in_order_print()
+        print(self.value)
+        if self.right:
+            self.right.in_order_print()
 
 #     """ Print the value of every node, starting with the given node,
 #      in an iterative breadth first traversal"""
-    def bft_print(self, node):
-        # create a que for nodes
-        # add the first node to the que
-        # while que is not empty
-            # remove the first node from the que
+    def bft_print(self, bst):
+        queue = Que()
+        queue.enque(bst)
+        while queue is not None:
+            # remove the first node from the queue
+            cur_node = queue.deque()
             # print the removed node
-            # add all children into the que
-        pass
+            print(cur_node.value)
+            # add all children (of removed node) into the queue
+            if cur_node.left:
+                queue.enque(cur_node.left)
+            if cur_node.right:
+                queue.enque(cur_node.right)
+
 
 #     """ Print the value of every node, starting with the given node,
 #      in an iterative depth first traversal"""
@@ -142,7 +176,15 @@ class BSTNode:
             # get the current node from the top of the stack 
             # print that node
             # add all children to the stack
-        pass
+        stack = Stack()
+        stack.push(bst)
+        while len(stack.storage) > 0:
+            current = stack.pop()
+            print(current.value)
+            if current.right:
+                stack.push(current.right)
+            if current.left:
+                stack.push(current.left)
 
 # """
 #     # Stretch Goals -------------------------
@@ -170,8 +212,8 @@ bst.insert(3)
 bst.insert(4)
 bst.insert(2)
 
-# bst.bft_print()
-# bst.dft_print()
+# bst.bft_print(bst)
+# bst.dft_print(node)
 
 # print("elegant methods")
 # print("pre order")
@@ -179,4 +221,4 @@ bst.insert(2)
 # print("in order")
 # bst.in_order_dft()
 # print("post order")
-# bst.post_order_dft()
+# bst.post_order_dft() 
